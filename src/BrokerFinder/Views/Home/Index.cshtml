@@ -1,0 +1,37 @@
+@model IEnumerable<BrokerFinder.DTOs.BrokerDto>
+
+@{
+    ViewData["Title"] = "خانه";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>جستجوی کارگزاران</h2>
+        <form method="get" action="/Brokers">
+            <div class="input-group mb-3">
+                <input name="port" type="text" class="form-control" placeholder="نام بندر" />
+                <button class="btn btn-primary" type="submit">جستجو</button>
+            </div>
+        </form>
+
+        <h3>کارگزاران ویژه</h3>
+        <div class="row">
+            @foreach(var b in Model)
+            {
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@b.FullName</h5>
+                            <p class="card-text">@b.Description</p>
+                            <a href="/Brokers/Details/@b.Id" class="btn btn-outline-primary">نمایش پروفایل</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>تماس</h4>
+        <p>در آینده: CTA، پلن ها و تبلیغات</p>
+    </div>
+</div>

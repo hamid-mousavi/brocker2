@@ -1,0 +1,5 @@
+body { background: #f8f9fa; }
+.card { border-radius: 10px; }
+/* RTL helpers */
+html[dir="rtl"] .me-auto { margin-left: auto!important; }
+html[dir="rtl"] .ms-auto { margin-right: auto!important; }
