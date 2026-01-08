@@ -7,6 +7,16 @@ public static class DataSeeder
 {
     public static async Task SeedAsync(ApplicationDbContext db, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {
+        // Ensure DB is created (helpful if migrations are not present in dev)
+        try
+        {
+            await db.Database.EnsureCreatedAsync();
+        }
+        catch
+        {
+            // ignore - if it fails, next operations may still work via Migrate
+        }
+
         // Roles
         var roles = new[] { "Admin", "Broker" };
         foreach (var r in roles)
